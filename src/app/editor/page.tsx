@@ -7,7 +7,7 @@ import ReadmeEditor from '../../components/editor/ReadmeEditor'
 import MainSection from '../../components/editor/MainSection'
 
 export default function Component() {
-  const [readme, setReadme] = useState(`
+  const [readme, setReadme] = useState(`# This is perfect!
   A paragraph with *emphasis* and **strong importance**.
 
 > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
@@ -27,7 +27,7 @@ export default function Component() {
 | - | :- | -: | :-: |
 
 
-# This is perfect!`);
+`);
 
   return (
     <div className="flex min-h-screen">

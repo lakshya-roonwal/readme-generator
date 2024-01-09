@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.6.0",
     "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.0.4",
     "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
@@ -18,7 +20,6 @@
     "github-markdown-css": "^5.5.0",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.307.0",
-    "monaco-editor": "^0.45.0",
     "mongoose": "^7.6.2",
     "next": "13.5.4",
     "nodemailer": "^6.9.6",
