@@ -1,18 +1,17 @@
 "use client"
 import React from 'react'
-import SectionBar from '../components/SectionBar'
-import ReadmeEditor from '../components/ReadmeEditor'
-import MainSection from '../components/MainSection'
 
-const Editor = () => {
-    console.log("hello world")
+// Adding component
+import SectionBar from '../../components/editor/SectionBar'
+import ReadmeEditor from '../../components/editor/ReadmeEditor'
+import MainSection from '../../components/editor/MainSection'
+
+export default function Component() {
   return (
-    <div className="flex h-screen p-2">
+    <div className="flex min-h-screen">
         <SectionBar/>
         <ReadmeEditor/>
         <MainSection/>
     </div>
-  )
+  );
 }
-
-export default Editor
