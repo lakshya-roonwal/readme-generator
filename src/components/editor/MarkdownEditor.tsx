@@ -1,6 +1,16 @@
 import { Editor } from "@monaco-editor/react";
+import { FC } from 'react'
 
-const MarkdownEditor = ({readme,handleTextareaChange}) => {
+type handleTextareaChange = (markdown: string) => void;
+
+interface MarkdownEditorProps {
+  readme: string;
+  handleTextareaChange: handleTextareaChange;
+}
+const MarkdownEditor: FC<MarkdownEditorProps> = ({
+  readme,
+  handleTextareaChange,
+}) => {
   return (
     <div>
       <Editor
@@ -20,6 +30,6 @@ const MarkdownEditor = ({readme,handleTextareaChange}) => {
       />
     </div>
   );
-}
+};
 
 export default MarkdownEditor
