@@ -4,7 +4,7 @@ const MarkdownEditor = ({readme,handleTextareaChange}) => {
   return (
     <div>
       <Editor
-        className="h-[calc(100vh-100px)]"
+        className="h-[calc(100vh)]"
         defaultLanguage="markdown"
         defaultValue={readme}
         theme="vs-dark"

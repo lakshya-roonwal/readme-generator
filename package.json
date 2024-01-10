@@ -26,7 +26,9 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.0.0",
     "react-markdown": "^9.0.1",
+    "react-slugify": "^3.0.3",
     "remark-gfm": "^4.0.0",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7"

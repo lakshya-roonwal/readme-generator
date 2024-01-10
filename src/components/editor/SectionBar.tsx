@@ -1,9 +1,28 @@
-import React from 'react'
+import { FC } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
+import { ReadMeSection } from "@/types/types";
 
-const SectionBar = () => {
+import { MdDelete } from "react-icons/md";
+
+type handleAddInReadMeType = (id: number) => void;
+type handleSelectSection = (id: number) => void;
+type handleDeleteInReadMe = (id: number) => void;
+
+interface SectionBarProps {
+  readmeSections: ReadMeSection[];
+  handleAddInReadMe: handleAddInReadMeType;
+  handleSelectSection: handleSelectSection;
+  handleDeleteInReadMe: handleDeleteInReadMe;
+}
+
+const SectionBar: FC<SectionBarProps> = ({
+  readmeSections,
+  handleAddInReadMe,
+  handleSelectSection,
+  handleDeleteInReadMe,
+}: SectionBarProps) => {
   return (
     <aside className="w-1/4 bg-gray-800 p-6 text-white">
       <div className="flex justify-between mb-4">
@@ -15,6 +34,37 @@ const SectionBar = () => {
       <p className="text-sm mb-4">
         Click on a section below to edit the contents.
       </p>
+      <ScrollArea className="h-auto overflow-y-auto my-2">
+        <ul className="space-y-2">
+          {readmeSections.map((section) => {
+            return (
+              <>
+                {section.inReadme ? (
+                  <li>
+                    <Button
+                      className="w-full justify-between "
+                      variant="ghost"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Stop event propagation
+                        handleSelectSection(section.id);
+                      }}
+                    >
+                      {section.name}
+                      <MdDelete
+                        onClick={(e) => {
+                          e.stopPropagation(); // Stop event propagation
+                          handleDeleteInReadMe(section.id);
+                        }}
+                      />
+                    </Button>
+                  </li>
+                ) : null}
+              </>
+            );
+          })}
+        </ul>
+      </ScrollArea>
+
       <Input
         className="mb-4"
         placeholder="Search for a section"
@@ -25,85 +75,30 @@ const SectionBar = () => {
       </Button>
       <ScrollArea className="h-[calc(100vh-200px)] overflow-y-auto">
         <ul className="space-y-2">
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Acknowledgements
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              API Reference
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Appendix
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Authors
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Badges
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Color Reference
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Contributing
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Demo
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Deployment
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Documentation
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Environment Variables
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              FAQ
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Features
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Feedback
-            </Button>
-          </li>
-          <li>
-            <Button className="w-full justify-start" variant="ghost">
-              Github Profile - About Me
-            </Button>
-          </li>
+          {readmeSections.map((section) => {
+            return (
+              <>
+                {!section.inReadme ? (
+                  <li>
+                    <Button
+                      className="w-full justify-start"
+                      variant="ghost"
+                      onClick={() => {
+                        handleAddInReadMe(section.id);
+                        handleSelectSection(section.id);
+                      }}
+                    >
+                      {section.name}
+                    </Button>
+                  </li>
+                ) : null}
+              </>
+            );
+          })}
         </ul>
       </ScrollArea>
     </aside>
   );
-}
+};
 
-export default SectionBar
+export default SectionBar;
