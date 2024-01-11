@@ -19,12 +19,14 @@ import { MdDelete } from "react-icons/md";
 type handleAddInReadMeType = (id: number) => void;
 type handleSelectSection = (id: number) => void;
 type handleDeleteInReadMe = (id: number) => void;
+type handleResetReadMe = () => void;
 
 interface SectionBarProps {
   readmeSections: ReadMeSection[];
   handleAddInReadMe: handleAddInReadMeType;
   handleSelectSection: handleSelectSection;
   handleDeleteInReadMe: handleDeleteInReadMe;
+  handleResetReadMe: handleResetReadMe;
 }
 
 const SectionBar: FC<SectionBarProps> = ({
@@ -32,12 +34,12 @@ const SectionBar: FC<SectionBarProps> = ({
   handleAddInReadMe,
   handleSelectSection,
   handleDeleteInReadMe,
+  handleResetReadMe,
   setReadmeSections,
 }: SectionBarProps) => {
   const [customSectionTitle, setCustomSectionTitle] = useState("");
   const [open, setOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredSections, setFilteredSections] = useState([]);
 
   const addCustomSectionToReadMe = (title: string) => {
     const newSection = {
@@ -57,14 +59,9 @@ const SectionBar: FC<SectionBarProps> = ({
   useEffect(() => {
     if (searchQuery.length > 0) {
       console.log("done");
-      setFilteredSections(() => {
-        return readmeSections.filter((section) =>
-          section.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-      });
     } else {
       console.log("not done");
-      setFilteredSections(readmeSections);
+    
     }
   }, [searchQuery]);
 
@@ -73,7 +70,11 @@ const SectionBar: FC<SectionBarProps> = ({
       <Dialog open={open} onOpenChange={setOpen}>
         <div className="flex justify-between mb-4">
           <h2 className="text-xl font-semibold">Sections</h2>
-          <Button className="text-sm" variant="ghost">
+          <Button
+            className="text-sm"
+            variant="ghost"
+            onClick={handleResetReadMe}
+          >
             Reset
           </Button>
         </div>
@@ -162,9 +163,12 @@ const SectionBar: FC<SectionBarProps> = ({
 
         <div className="">
           <ul className="space-y-2">
-            {filteredSections.length > 0 ? (
-              filteredSections.map((section) => {
-                return (
+            {readmeSections.length > 0 ? (
+              readmeSections
+                .filter((section) =>
+                  section.name.toLowerCase().includes(searchQuery.toLowerCase())
+                )
+                .map((section) => (
                   <>
                     {!section.inReadme ? (
                       <li key={section.id}>
@@ -174,6 +178,7 @@ const SectionBar: FC<SectionBarProps> = ({
                           onClick={() => {
                             handleAddInReadMe(section.id);
                             handleSelectSection(section.id);
+                            setSearchQuery('')
                           }}
                         >
                           {section.name}
@@ -181,8 +186,7 @@ const SectionBar: FC<SectionBarProps> = ({
                       </li>
                     ) : null}
                   </>
-                );
-              })
+                ))
             ) : (
               <p>No Section of this name</p>
             )}
