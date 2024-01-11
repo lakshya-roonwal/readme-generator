@@ -1,11 +1,11 @@
-import { FC } from "react";
+import { FC, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
+  DialogClose,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -32,10 +32,29 @@ const SectionBar: FC<SectionBarProps> = ({
   handleAddInReadMe,
   handleSelectSection,
   handleDeleteInReadMe,
+  setReadmeSections,
 }: SectionBarProps) => {
+  const [customSectionTitle, setCustomSectionTitle] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const addCustomSectionToReadMe=(title:string)=>{
+    const newSection = {
+      id: new Date().getTime().toString(),
+      name: title,
+      markdown: "# " + title,
+      selected: true,
+      inReadme: true,
+      customSection: true,
+    };
+    setReadmeSections((prevElements) => [...prevElements, newSection]);
+    // Close the dialog
+    setOpen(false);
+    setCustomSectionTitle('');
+  }
+
   return (
     <aside className="w-1/4 bg-gray-800 p-6 text-white overflow-y-scroll max-h-screen">
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <div className="flex justify-between mb-4">
           <h2 className="text-xl font-semibold">Sections</h2>
           <Button className="text-sm" variant="ghost">
@@ -93,11 +112,32 @@ const SectionBar: FC<SectionBarProps> = ({
           </DialogHeader>
           <div className="grid gap-4 py-4 w-full">
             <div className="items-center gap-4 w-full">
-              <Input id="name" value="" className="col-span-3" placeholder="Section Name"/>
+              <Input
+                id="name"
+                value={customSectionTitle}
+                onChange={(e) => {
+                  setCustomSectionTitle(e.target.value);
+                }}
+                className="col-span-3"
+                placeholder="Section Name"
+              />
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Add Section</Button>
+            <DialogClose asChild>
+              <Button type="button" variant="secondary">
+                Close
+              </Button>
+            </DialogClose>
+            <Button
+              type="submit"
+              disabled={customSectionTitle.length===0}
+              onClick={() => {
+                addCustomSectionToReadMe(customSectionTitle);
+              }}
+            >
+              Add Section
+            </Button>
           </DialogFooter>
         </DialogContent>
 

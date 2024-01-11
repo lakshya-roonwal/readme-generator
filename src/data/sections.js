@@ -2,8 +2,7 @@ export const sections = [
   {
     id: 3457890,
     name: "Title and Description",
-    markdown:
-      "# Project Title \nA brief description of what this project does and who it's for",
+    markdown:      "# Project Title \nA brief description of what this project does and who it's for",
     selected: true,
     inReadme: true,
     customSection: false,

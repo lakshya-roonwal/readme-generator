@@ -48,6 +48,12 @@ export default function Component() {
 
   const handleDeleteInReadMe = (id: ReadMeSection) => {
     // If Custom Section then-
+    console.log(id);
+    setReadmeSections((prevElements) =>
+      prevElements.filter(
+        (element) => !(element.id === id && element.customSection === true)
+      )
+    );
 
     // If Default Section then-
     console.log(id);
@@ -78,6 +84,7 @@ export default function Component() {
         handleAddInReadMe={handleAddInReadMe}
         handleSelectSection={handleSelectSection}
         handleDeleteInReadMe={handleDeleteInReadMe}
+        setReadmeSections={setReadmeSections}
       />
       <ReadmeEditor
         readmeSections={readmeSections}
