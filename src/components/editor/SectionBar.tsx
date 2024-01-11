@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
@@ -34,10 +34,12 @@ const SectionBar: FC<SectionBarProps> = ({
   handleDeleteInReadMe,
   setReadmeSections,
 }: SectionBarProps) => {
-  const [customSectionTitle, setCustomSectionTitle] = useState('');
+  const [customSectionTitle, setCustomSectionTitle] = useState("");
   const [open, setOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredSections, setFilteredSections] = useState([]);
 
-  const addCustomSectionToReadMe=(title:string)=>{
+  const addCustomSectionToReadMe = (title: string) => {
     const newSection = {
       id: new Date().getTime().toString(),
       name: title,
@@ -49,8 +51,22 @@ const SectionBar: FC<SectionBarProps> = ({
     setReadmeSections((prevElements) => [...prevElements, newSection]);
     // Close the dialog
     setOpen(false);
-    setCustomSectionTitle('');
-  }
+    setCustomSectionTitle("");
+  };
+
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      console.log("done");
+      setFilteredSections(() => {
+        return readmeSections.filter((section) =>
+          section.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      });
+    } else {
+      console.log("not done");
+      setFilteredSections(readmeSections);
+    }
+  }, [searchQuery]);
 
   return (
     <aside className="w-1/4 bg-gray-800 p-6 text-white overflow-y-scroll max-h-screen">
@@ -96,10 +112,13 @@ const SectionBar: FC<SectionBarProps> = ({
         </ScrollArea>
 
         <Input
-          className="mb-4"
+          className="mb-4 text-black"
           placeholder="Search for a section"
           type="search"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
+
         <DialogTrigger asChild>
           <Button className="mb-4" variant="secondary">
             + Custom Section
@@ -131,7 +150,7 @@ const SectionBar: FC<SectionBarProps> = ({
             </DialogClose>
             <Button
               type="submit"
-              disabled={customSectionTitle.length===0}
+              disabled={customSectionTitle.length === 0}
               onClick={() => {
                 addCustomSectionToReadMe(customSectionTitle);
               }}
@@ -143,26 +162,30 @@ const SectionBar: FC<SectionBarProps> = ({
 
         <div className="">
           <ul className="space-y-2">
-            {readmeSections.map((section) => {
-              return (
-                <>
-                  {!section.inReadme ? (
-                    <li>
-                      <Button
-                        className="w-full justify-start"
-                        variant="ghost"
-                        onClick={() => {
-                          handleAddInReadMe(section.id);
-                          handleSelectSection(section.id);
-                        }}
-                      >
-                        {section.name}
-                      </Button>
-                    </li>
-                  ) : null}
-                </>
-              );
-            })}
+            {filteredSections.length > 0 ? (
+              filteredSections.map((section) => {
+                return (
+                  <>
+                    {!section.inReadme ? (
+                      <li key={section.id}>
+                        <Button
+                          className="w-full justify-start"
+                          variant="ghost"
+                          onClick={() => {
+                            handleAddInReadMe(section.id);
+                            handleSelectSection(section.id);
+                          }}
+                        >
+                          {section.name}
+                        </Button>
+                      </li>
+                    ) : null}
+                  </>
+                );
+              })
+            ) : (
+              <p>No Section of this name</p>
+            )}
           </ul>
         </div>
       </Dialog>
