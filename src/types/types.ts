@@ -4,4 +4,5 @@ export interface ReadMeSection {
   markdown: string;
   selected: boolean;
   inReadme: boolean;
+  customSection:boolean;
 }

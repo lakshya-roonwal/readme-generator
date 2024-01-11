@@ -6,6 +6,7 @@ export const sections = [
       "# Project Title \nA brief description of what this project does and who it's for",
     selected: true,
     inReadme: true,
+    customSection: false,
   },
   {
     id: 7414407,
@@ -13,6 +14,7 @@ export const sections = [
     markdown: "# Acknowledgements",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 4139194,
@@ -20,6 +22,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 2954351,
@@ -27,6 +30,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 1884676,
@@ -34,6 +38,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 8906892,
@@ -41,6 +46,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 7977399,
@@ -48,6 +54,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 2008678,
@@ -55,6 +62,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   { id: 5629551, name: "Demo", markdown: "", selected: false, inReadme: false },
   {
@@ -63,6 +71,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 6613453,
@@ -70,6 +79,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 1969602,
@@ -77,6 +87,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   { id: 4705720, name: "FAQ", markdown: "", selected: false, inReadme: false },
   {
@@ -85,6 +96,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 2625257,
@@ -92,6 +104,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 1757582,
@@ -99,6 +112,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 8765631,
@@ -106,6 +120,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 1570696,
@@ -113,6 +128,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 8188827,
@@ -120,6 +136,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 2765714,
@@ -127,6 +144,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 2130605,
@@ -134,6 +152,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 2737829,
@@ -141,6 +160,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 9390709,
@@ -148,6 +168,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   { id: 3909820, name: "Logo", markdown: "", selected: false, inReadme: false },
   {
@@ -156,6 +177,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 6972720,
@@ -163,6 +185,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 8118576,
@@ -170,6 +193,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 7032548,
@@ -177,6 +201,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 9059525,
@@ -184,6 +209,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 3495753,
@@ -191,6 +217,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   { id: 4521979, name: "Tech", markdown: "", selected: false, inReadme: false },
   {
@@ -199,6 +226,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 1214188,
@@ -206,6 +234,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 6931220,
@@ -213,6 +242,7 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
   {
     id: 6153177,
@@ -220,5 +250,6 @@ export const sections = [
     markdown: "",
     selected: false,
     inReadme: false,
+    customSection: false,
   },
 ];

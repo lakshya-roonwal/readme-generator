@@ -60,6 +60,17 @@ export default function Component() {
     );
   };
 
+  const addCustomSection=(name:string)=>{
+    setReadmeSections((prevElements) =>
+      prevElements.map((element) => ({
+        ...element,
+        inReadme: false,
+        selected: false,
+        name: name,
+      }))
+    );
+  }
+
   return (
     <div className="flex w-full min-h-screen-full flex-grow">
       <SectionBar
