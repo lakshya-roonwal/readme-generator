@@ -33,17 +33,17 @@ const MainSection = ({readmeSections}:any) => {
             </TabsList>
           </div>
         </div>
-        <div className="max-h-screen overflow-y-auto">
+        <div className="max-h-screen">
           <TabsContent value="preview">
             <div className="markdown-body">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 children={readme}
-                className={"h-[calc(100vh-150px)]"}
+                className={"h-[calc(100vh-150px)] overflow-y-auto"}
               />
             </div>
           </TabsContent>
-          <TabsContent value="raw" className="h-full">
+          <TabsContent value="raw" className="h-[calc(100vh-150px)]">
             <textarea
               readOnly
               className="h-full w-full border-1  resize-none bg-white dark:bg-gray-800 focus:outline-none"

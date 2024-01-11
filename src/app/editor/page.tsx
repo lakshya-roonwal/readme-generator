@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Adding component
 import SectionBar from '../../components/editor/SectionBar'
@@ -9,13 +9,21 @@ import { ReadMeSection } from '@/types/types'
 import {sections} from '@/data/sections'
 
 export default function Component() {
-
   const [readmeSections, setReadmeSections] = useState<ReadMeSection[]>(
-    sections
+    JSON.parse(localStorage.getItem("readme-sections")) || sections
   );
 
+
+  // For Saving The Data
+  useEffect(() => {
+    localStorage.setItem(
+      "readme-sections",
+      JSON.stringify(readmeSections)
+    );
+  }, [readmeSections]);
+
   const handleAddInReadMe = (id: ReadMeSection) => {
-    console.log(id)
+    console.log(id);
     setReadmeSections((prevElements) =>
       prevElements.map((element) =>
         element.id === id ? { ...element, ["inReadme"]: true } : element
@@ -24,7 +32,7 @@ export default function Component() {
   };
 
   const handleSelectSection = (id: ReadMeSection) => {
-    console.log("Handle Select Section")
+    console.log("Handle Select Section");
     // For Remvoing selected for other elements
     setReadmeSections((prevElements) =>
       prevElements.map((element) => ({ ...element, selected: false }))
@@ -39,7 +47,6 @@ export default function Component() {
   };
 
   const handleDeleteInReadMe = (id: ReadMeSection) => {
-
     // If Custom Section then-
 
     // If Default Section then-
