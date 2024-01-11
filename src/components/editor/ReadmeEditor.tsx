@@ -31,7 +31,7 @@ const ReadmeEditor = ({ readmeSections, setReadmeSections }: any) => {
         );
   };
   return (
-    <section className="w-1/2 bg-gray-700 p-6">
+    <section className="w-1/2 bg-gray-700 p-6 max-h-screen">
       {readmeMarkdown ? (
         <Tabs defaultValue="texteditor">
           <div className="flex justify-between mb-4">

@@ -24,7 +24,7 @@ const SectionBar: FC<SectionBarProps> = ({
   handleDeleteInReadMe,
 }: SectionBarProps) => {
   return (
-    <aside className="w-1/4 bg-gray-800 p-6 text-white">
+    <aside className="w-1/4 bg-gray-800 p-6 text-white overflow-y-scroll max-h-screen">
       <div className="flex justify-between mb-4">
         <h2 className="text-xl font-semibold">Sections</h2>
         <Button className="text-sm" variant="ghost">
@@ -73,7 +73,7 @@ const SectionBar: FC<SectionBarProps> = ({
       <Button className="mb-4" variant="secondary">
         + Custom Section
       </Button>
-      <ScrollArea className="h-[calc(100vh-200px)] overflow-y-auto">
+      <div className="">
         <ul className="space-y-2">
           {readmeSections.map((section) => {
             return (
@@ -96,7 +96,7 @@ const SectionBar: FC<SectionBarProps> = ({
             );
           })}
         </ul>
-      </ScrollArea>
+      </div>
     </aside>
   );
 };
