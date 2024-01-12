@@ -46,7 +46,7 @@ const MainSection = ({readmeSections}:any) => {
   },[readmeSections])
 
   return (
-    <section className="w-1/2 bg-white p-6">
+    <section className="w-1/2 bg-white p-6 overflow-x-scroll">
       <Tabs defaultValue="preview">
         <div className="flex justify-between mb-4">
           <h2 className="text-xl font-semibold text-gray-800">Preview</h2>
