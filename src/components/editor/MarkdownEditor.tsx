@@ -16,7 +16,7 @@ const MarkdownEditor: FC<MarkdownEditorProps> = ({
       <Editor
         className="h-[calc(100vh)]"
         defaultLanguage="markdown"
-        defaultValue={readme}
+        value={readme}
         theme="vs-dark"
         options={{
           minimap: {
