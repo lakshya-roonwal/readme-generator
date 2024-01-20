@@ -15,6 +15,7 @@ import {
 import { ReadMeSection } from "@/types/types";
 
 import { MdDelete } from "react-icons/md";
+import { RotateCcw  } from "lucide-react";
 
 type handleAddInReadMeType = (id: number) => void;
 type handleSelectSection = (id: number) => void;
@@ -71,10 +72,11 @@ const SectionBar: FC<SectionBarProps> = ({
         <div className="flex justify-between mb-4">
           <h2 className="text-xl font-semibold">Sections</h2>
           <Button
-            className="text-sm"
+            className="text-sm flex items-center"
             variant="ghost"
             onClick={handleResetReadMe}
           >
+            <RotateCcw size={'16px'}/>
             Reset
           </Button>
         </div>
