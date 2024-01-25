@@ -67,7 +67,7 @@ const SectionBar: FC<SectionBarProps> = ({
   }, [searchQuery]);
 
   return (
-    <aside className="w-1/4 bg-gray-800 p-6 text-white overflow-y-scroll max-h-screen">
+    <aside className="w-full bg-gray-800 p-6 text-white overflow-y-scroll max-h-screen">
       <Dialog open={open} onOpenChange={setOpen}>
         <div className="flex justify-between mb-4">
           <h2 className="text-xl font-semibold">Sections</h2>

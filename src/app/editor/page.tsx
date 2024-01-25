@@ -81,7 +81,8 @@ export default function Component() {
   }
 
   return (
-    <div className="flex w-full min-h-screen-full flex-grow">
+    <div className="flex flex-col sm:flex-row w-full min-h-screen-full flex-grow">
+    <div className='hidden sm:block'>
       <SectionBar
         readmeSections={readmeSections}
         handleAddInReadMe={handleAddInReadMe}
@@ -89,7 +90,8 @@ export default function Component() {
         handleDeleteInReadMe={handleDeleteInReadMe}
         handleResetReadMe={handleResetReadMe}
         setReadmeSections={setReadmeSections}
-      />
+        />
+        </div>
       <ReadmeEditor
         readmeSections={readmeSections}
         setReadmeSections={setReadmeSections}

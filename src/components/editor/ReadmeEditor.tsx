@@ -31,7 +31,7 @@ const ReadmeEditor = ({ readmeSections, setReadmeSections }: any) => {
         );
   };
   return (
-    <section className="w-1/2 bg-gray-700 p-6 max-h-screen">
+    <section className="sm:w-1/2 bg-gray-700 p-6 h-[50vh] sm:h-screen">
       {readmeMarkdown ? (
         <Tabs defaultValue="texteditor">
           <div className="flex justify-between mb-4">
@@ -49,15 +49,17 @@ const ReadmeEditor = ({ readmeSections, setReadmeSections }: any) => {
               onChange={(e) => {
                 handleTextareaChange(e.target.value);
               }}
-              className="h-[calc(100vh-100px)]"
+              className="h-[35vh] sm:h-[calc(100vh-100px)]"
               placeholder="Type your markdown here."
             />
           </TabsContent>
           <TabsContent value="markdown">
+            <div className='h-[30vh] sm:h-[calc(100vh-150px)] overflow-hidden'>
             <MarkdownEditor
               readme={readmeMarkdown?.markdown}
               handleTextareaChange={handleTextareaChange}
-            />
+              />
+              </div>
           </TabsContent>
         </Tabs>
       ) : (

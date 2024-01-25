@@ -46,9 +46,9 @@ const MainSection = ({readmeSections}:any) => {
   },[readmeSections])
 
   return (
-    <section className="w-1/2 bg-white p-6 overflow-x-scroll">
+    <section className="sm:w-1/2 bg-white p-6 overflow-x-scroll">
       <Tabs defaultValue="preview">
-        <div className="flex justify-between mb-4">
+        <div className="flex flex-col justify-between mb-4">
           <h2 className="text-xl font-semibold text-gray-800">Preview</h2>
           <div className="flex space-x-2">
             <Button variant="default" onClick={handleDownload}>
@@ -69,7 +69,7 @@ const MainSection = ({readmeSections}:any) => {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 children={readme}
-                className={"h-[calc(100vh-150px)] overflow-y-auto"}
+                className={"h-[30vh] sm:h-[calc(100vh-150px)] overflow-y-auto"}
               />
             </div>
           </TabsContent>
@@ -103,7 +103,7 @@ const MainSection = ({readmeSections}:any) => {
               </div>
               <textarea
                 readOnly
-                className="h-[calc(100vh-150px)] w-full border-1  resize-none bg-white dark:bg-gray-800 focus:outline-none"
+                className="h-[30vh] sm:h-[calc(100vh-150px)] w-full border-1  resize-none bg-white dark:bg-gray-800 focus:outline-none"
                 value={readme}
               ></textarea>
             </div>
