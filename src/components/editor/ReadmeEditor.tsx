@@ -33,35 +33,19 @@ const ReadmeEditor = ({ readmeSections, setReadmeSections }: any) => {
   return (
     <section className="sm:w-1/2 bg-gray-700 p-6 h-[50vh] sm:h-screen">
       {readmeMarkdown ? (
-        <Tabs defaultValue="texteditor">
+        <div className="">
           <div className="flex justify-between mb-4">
             <h2 className="text-xl font-semibold text-white">Editor</h2>
             <div className="flex space-x-2">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="texteditor">Text Editor</TabsTrigger>
-                <TabsTrigger value="markdown">Markdown</TabsTrigger>
-              </TabsList>
             </div>
           </div>
-          <TabsContent value="texteditor">
-            <Textarea
-              value={readmeMarkdown?.markdown}
-              onChange={(e) => {
-                handleTextareaChange(e.target.value);
-              }}
-              className="h-[35vh] sm:h-[calc(100vh-100px)]"
-              placeholder="Type your markdown here."
-            />
-          </TabsContent>
-          <TabsContent value="markdown">
-            <div className='h-[30vh] sm:h-[calc(100vh-150px)] overflow-hidden'>
+            <div className='h-[30vh] sm:h-[calc(100vh-100px)] overflow-hidden'>
             <MarkdownEditor
               readme={readmeMarkdown?.markdown}
               handleTextareaChange={handleTextareaChange}
               />
               </div>
-          </TabsContent>
-        </Tabs>
+          </div>
       ) : (
         <div className="w-full border-1 text-center items-center p-4">
           <p className='text-white'>Select a section from sidebar to edit</p>
